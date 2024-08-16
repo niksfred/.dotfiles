@@ -1,0 +1,23 @@
+# Ignore all files so we can add only needed
+*
+
+# Add .gitignore
+!.gitignore
+
+# ZSH
+!.zshrc
+
+# Wezterm
+!.wezterm.lua
+
+# Oh my Posh themes
+!.poshthemes
+!.poshthemes/*
+
+# Powerlevel10k
+!.p10k.zsh
+
+# nvim
+!.config
+!.config/nvim
+!.config/nvim/**
