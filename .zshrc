@@ -60,7 +60,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 export PATH=$PATH:$HOME/bin
-. "$HOME/.cargo/env"
+
 
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -73,3 +73,5 @@ source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$PATH:/opt/nvim-linux64/bin"
