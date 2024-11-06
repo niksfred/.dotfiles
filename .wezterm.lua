@@ -13,8 +13,11 @@ config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 config.win32_system_backdrop = "Acrylic"
 config.window_background_opacity = 0.95
-config.font = wezterm.font("GeistMono Nerd Font Mono")
+config.font = wezterm.font("FiraCode Nerd Font", { weight = "DemiBold" })
 config.font_size = 12
+
+config.underline_position = "-2pt"
+config.underline_thickness = "1.5pt"
 
 config.window_close_confirmation = "AlwaysPrompt"
 config.default_workspace = "home"
