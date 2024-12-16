@@ -75,3 +75,5 @@ source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
