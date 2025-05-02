@@ -7,11 +7,11 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+
 -- Look configs
 config.color_scheme = "Catppuccin Macchiato"
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
-config.win32_system_backdrop = "Acrylic"
 config.window_background_opacity = 0.95
 config.font = wezterm.font("FiraCode Nerd Font", { weight = "DemiBold" })
 config.font_size = 12
@@ -27,6 +27,13 @@ config.inactive_pane_hsb = {
 	saturation = 0.75,
 	brightness = 0.75,
 }
+
+local is_windows = wezterm.target_triple == 'x86_64-pc-windows-msvc'
+if is_windows then
+	config.default_domain = 'WSL:Ubuntu'
+	config.window_background_opacity = 0
+	config.win32_system_backdrop = 'Acrylic'
+end
 
 -- Keys config
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -100,7 +107,10 @@ config.keys = {
 	{
 		key = "n",
 		mods = "LEADER",
-		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+		action = wezterm.action.SpawnCommandInNewTab {
+      domain = "CurrentPaneDomain",
+      cwd = "~"
+    }
 	},
 	{
 		key = "[",
