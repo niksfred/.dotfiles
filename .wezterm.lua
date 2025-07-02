@@ -13,7 +13,7 @@ config.color_scheme = "Catppuccin Macchiato"
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.95
-config.font = wezterm.font("FiraCode Nerd Font", { weight = "DemiBold" })
+config.font = wezterm.font("Fira Code", { weight = "DemiBold" })
 config.font_size = 12
 
 config.underline_position = "-2pt"

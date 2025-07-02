@@ -16,6 +16,10 @@ return {
         Hint = { color = "#50FA7B" },
         Misc = { color = "#BD93F9" },
       },
+      handler = {
+        gitsigns = true,
+      },
     })
+    require("scrollbar.handlers.gitsigns").setup()
   end,
 }

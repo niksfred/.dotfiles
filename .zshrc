@@ -30,8 +30,8 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ''
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
@@ -44,9 +44,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 alias ll="ls -al"
-
-alias reconf="php ../phoenix/Framework/src/reconfig.php config/phoenix-config.php"
-
 
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
@@ -61,20 +58,13 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=$PATH:$HOME/bin
 
-
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-#Adds oh-my-posh theme
-#eval "$(oh-my-posh init zsh --config ~/.poshthemes/nikolay.omp.json)"
-
 # Powerlevel10k theme
-source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
+#source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
+alias nvim="$HOME/bin/nvim-macos-arm64/bin/nvim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -84,10 +74,6 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 --color=selected-bg:#494d64 \
 --multi"
-
-alias tmux="TERM=screen-256color-bce tmux"
-
-export PATH="$HOME/.local/share/nvim/spec/node_modules/.bin:$PATH"
 
 # NVM autoload
 autoload -U add-zsh-hook
@@ -114,3 +100,4 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+source ~/powerlevel10k/powerlevel10k.zsh-theme
