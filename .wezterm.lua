@@ -7,13 +7,12 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-
 -- Look configs
 config.color_scheme = "Catppuccin Macchiato"
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.95
-config.font = wezterm.font("Fira Code", { weight = "DemiBold" })
+config.font = wezterm.font("JetBrains Mono")
 config.font_size = 12
 
 config.underline_position = "-2pt"
@@ -28,11 +27,11 @@ config.inactive_pane_hsb = {
 	brightness = 0.75,
 }
 
-local is_windows = wezterm.target_triple == 'x86_64-pc-windows-msvc'
+local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 if is_windows then
-	config.default_domain = 'WSL:Ubuntu'
+	config.default_domain = "WSL:Ubuntu"
 	config.window_background_opacity = 0
-	config.win32_system_backdrop = 'Acrylic'
+	config.win32_system_backdrop = "Acrylic"
 end
 
 -- Keys config
@@ -107,10 +106,10 @@ config.keys = {
 	{
 		key = "n",
 		mods = "LEADER",
-		action = wezterm.action.SpawnCommandInNewTab {
-      domain = "CurrentPaneDomain",
-      cwd = "~"
-    }
+		action = wezterm.action.SpawnCommandInNewTab({
+			domain = "CurrentPaneDomain",
+			cwd = "~",
+		}),
 	},
 	{
 		key = "[",
@@ -126,6 +125,16 @@ config.keys = {
 		key = "t",
 		mods = "LEADER",
 		action = wezterm.action.ShowTabNavigator,
+	},
+	{
+		key = "j",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ScrollByPage(0.5),
+	},
+	{
+		key = "k",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ScrollByPage(-0.5),
 	},
 }
 
