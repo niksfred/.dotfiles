@@ -2,7 +2,15 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      servers = {},
+      servers = {
+        vtsls = {
+          cmd = {
+            vim.fn.expand("~/.nvm/versions/node/v22.16.0/bin/node"),
+            vim.fn.expand("~/.local/share/nvim/mason/packages/vtsls/node_modules/@vtsls/language-server/dist/main.js"),
+            "--stdio",
+          },
+        },
+      },
     },
   },
 

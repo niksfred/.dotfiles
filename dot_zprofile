@@ -1,0 +1,8 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+
+if command -v nvm >/dev/null 2>&1; then
+  nvm use default >/dev/null
+fi
