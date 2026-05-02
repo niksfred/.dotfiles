@@ -52,12 +52,28 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:$HOME/bin
 
 # Powerlevel10k theme
-#source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias nvim="$HOME/bin/nvim-macos-arm64/bin/nvim"
+unalias nvim 2>/dev/null
+nvim() {
+  OS="$(uname -s)"
+  ARCH="$(uname -m)"
+
+  if [[ "$OS" == "Darwin" ]]; then
+    if [[ "$ARCH" == "arm64" ]]; then
+      ~/.bin/nvim-macos-arm64/bin/nvim "$@"
+    else
+      ~/.bin/nvim-macos-x86_64/bin/nvim "$@"
+    fi
+  elif [[ "$OS" == "Linux" ]]; then
+      ~/.bin/nvim-linux-x86_64.appimage "$@"
+  else
+    command nvim "$@"
+  fi
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -96,3 +112,5 @@ load-nvmrc
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="$HOME/.local/bin:$PATH"
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
