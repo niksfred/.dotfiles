@@ -24,7 +24,7 @@ config.default_workspace = "home"
 -- dim inactive panes
 config.inactive_pane_hsb = {
 	saturation = 0.75,
-	brightness = 0.5,
+	brightness = 0.75,
 }
 
 local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
