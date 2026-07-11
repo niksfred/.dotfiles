@@ -12,7 +12,7 @@ config.color_scheme = "Catppuccin Macchiato"
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.95
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 12
 
 config.underline_position = "-2pt"
@@ -32,7 +32,21 @@ if is_windows then
 	config.default_domain = "WSL:Ubuntu"
 	config.window_background_opacity = 0
 	config.win32_system_backdrop = "Acrylic"
+	-- Windows registers the installed family under this name.
+	config.font = wezterm.font("Fira Code")
 end
+
+-- Persistent WezTerm multiplexer session on the Mac Mini.
+-- The remote machine must have Remote Login and the WezTerm app installed.
+config.ssh_domains = {
+	{
+		name = "mac-mini",
+		remote_address = "192.168.31.6",
+		username = "niksfred",
+		multiplexing = "WezTerm",
+		remote_wezterm_path = "/Applications/WezTerm.app/Contents/MacOS/wezterm",
+	},
+}
 
 -- Keys config
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -46,6 +60,14 @@ config.keys = {
 		key = "c",
 		mods = "LEADER",
 		action = wezterm.action.ActivateCopyMode,
+	},
+	{
+		key = "m",
+		mods = "LEADER",
+		action = wezterm.action.ShowLauncherArgs({
+			flags = "DOMAINS",
+			title = "Select a machine",
+		}),
 	},
 
 	-- Panes
